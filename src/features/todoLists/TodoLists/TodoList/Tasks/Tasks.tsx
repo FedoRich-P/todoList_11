@@ -1,16 +1,8 @@
 import * as React from 'react';
 import List from "@mui/material/List";
-import {ChangeEvent} from "react";
-import ListItem from "@mui/material/ListItem";
-import {getListItemSx} from "./Todolist.styles";
-import Checkbox from "@mui/material/Checkbox";
-import {EditableSpan} from "./EditableSpan";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
-import {useAppDispatch, useAppSelector} from "./app/hooks";
-import {changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./model/tasks-reducer";
-import type {TodolistType} from "./app/App";
-import {Task} from "./Task";
+import type {TodolistType} from "../../../../../app/App";
+import {Task} from "./Task/Task";
+import {useAppSelector} from "../../../../../common/hooks/useAppSelector";
 
 type TasksProps = {
     todoList: TodolistType;
@@ -18,19 +10,6 @@ type TasksProps = {
 export const Tasks = ({todoList: {id, filter, title}}: TasksProps) => {
 
     const tasks = useAppSelector(state => state.tasks)
-
-    const dispatch = useAppDispatch();
-
-    const removeTask = (taskId: string, todolistId: string) => {
-        dispatch(removeTaskAC({taskId, todolistId}))
-    }
-    const changeTaskStatus = (taskId: string, isDone: boolean, todolistId: string) => {
-        dispatch(changeTaskStatusAC({taskId, todolistId, isDone}))
-    }
-
-    const updateTask = (todolistId: string, taskId: string, title: string) => {
-        dispatch(changeTaskTitleAC({taskId, title, todolistId}))
-    }
 
     const allTodolistTasks = tasks[id]
     let tasksForTodolist = allTodolistTasks
@@ -59,6 +38,19 @@ export const Tasks = ({todoList: {id, filter, title}}: TasksProps) => {
         </>
     );
 };
+
+// const dispatch = useAppDispatch();
+//
+// const removeTask = (taskId: string, todolistId: string) => {
+//     dispatch(removeTaskAC({taskId, todolistId}))
+// }
+// const changeTaskStatus = (taskId: string, isDone: boolean, todolistId: string) => {
+//     dispatch(changeTaskStatusAC({taskId, todolistId, isDone}))
+// }
+//
+// const updateTask = (todolistId: string, taskId: string, title: string) => {
+//     dispatch(changeTaskTitleAC({taskId, title, todolistId}))
+// }
 
 
 // const removeTaskHandler = () => {

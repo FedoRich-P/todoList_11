@@ -1,10 +1,11 @@
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Unstable_Grid2";
-import {AddItemForm} from "./AddItemForm";
+import {AddItemForm} from "../common/components/AddItemForm/AddItemForm";
 import React from "react";
-import {addTodolistAC} from "./model/todolists-reducer";
-import {useAppDispatch} from "./app/hooks";
-import {TodoLists} from "./TodoLists";
+import {addTodolistAC} from "../model/todolists-reducer";
+
+import {Todolists} from "../features/todoLists/TodoLists/Todolists";
+import {useAppDispatch} from "../common/hooks/useAppDispatch";
 
 export const Main = () => {
     const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ export const Main = () => {
                 <AddItemForm addItem={addTodolist}/>
             </Grid>
             <Grid container spacing={4}>
-                <TodoLists/>
+                <Todolists/>
             </Grid>
         </Container>
     )

@@ -1,11 +1,10 @@
-import './App.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import {ThemeProvider} from '@mui/material/styles';
 import React from 'react';
-import {useAppSelector} from './hooks';
 import {getTheme} from "../common/theme/theme";
-import {Header} from "../Header";
-import {Main} from "../Main";
+import {Header} from "../common/components/Header/Header";
+import {Main} from "./Main";
+import {useAppSelector} from "../common/hooks/useAppSelector";
 
 export type TaskType = {
     id: string
@@ -24,7 +23,6 @@ export type TodolistType = {
 export type TasksStateType = {
     [key: string]: TaskType[]
 }
-
 
 export const App = () => {
     const themeMode = useAppSelector(state => state.app.themeMode)
